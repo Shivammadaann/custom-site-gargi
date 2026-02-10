@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gargi & Abhishek ❤️</title>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffafcc, #ffcad4, #bde0fe);
+            color: #590d22;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* Header Styling with Image */
+        .header {
+            text-align: center;
+            animation: fadeInDown 1.2s ease-out;
+            width: 100%;
+        }
+
+        .header-image-container {
+            width: 100%;
+            max-width: 800px;      
+            margin: 0 auto 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(168, 28, 76, 0.3);
+            position: relative;
+            animation: floatUp 1.5s ease-out 0.2s both;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .header-image:hover {
+            transform: scale(1.03);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 175, 204, 0.2), rgba(189, 224, 254, 0.2));
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #a4133c;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* Main Card Styling */
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(168, 28, 76, 0.2);
+            padding: 30px;
+            width: 100%;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.5s ease-out;
+            transition: transform 0.5s ease;
+            margin: 0 auto;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Envelope effect */
+        .envelope {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .card:hover .envelope {
+            opacity: 1;
+        }
+
+        /* Heart border */
+        .heart-border {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 2px dashed #ff4d6d;
+            border-radius: 25px;
+            z-index: 0;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Salutation styling */
+        .salutation {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #a4133c;
+            line-height: 1.2;
+            animation: textReveal 1.8s ease-out;
+        }
+
+        /* Message styling */
+        .message {
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 25px;
+            color: #800f2f;
+            line-height: 1.4;
+            font-weight: 600;
+            animation: textReveal 2s ease-out 0.3s both;
+        }
+
+        /* Password button */
+        .password-container {
+            text-align: center;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        .password-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff4d6d, #c9184a);
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(201, 24, 74, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .password-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(201, 24, 74, 0.6);
+            letter-spacing: 1px;
+        }
+
+        .password-button:active {
+            transform: scale(0.98);
+        }
+
+        .password-button i {
+            margin-right: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        /* Quote styling */
+        .quote {
+            background: rgba(255, 255, 255, 0.7);
+            border-left: 5px solid #ff4d6d;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #590d22;
+            animation: fadeIn 2s ease-out 0.5s both;
+            position: relative;
+        }
+
+        .quote:before {
+            content: "“";
+            font-size: 3.5rem;
+            color: #ff4d6d;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        /* Floating hearts */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff4d6d;
+            opacity: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #800f2f;
+            opacity: 0.8;
+            animation: fadeIn 3s ease-out;
+        }
+
+        /* Password Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .password-popup {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transform: translateY(-50px);
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        .popup-overlay.active .password-popup {
+            transform: translateY(0);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: #a4133c;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .popup-close:hover {
+            transform: scale(1.2);
+        }
+
+        .popup-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #a4133c;
+            margin-bottom: 10px;
+        }
+
+        .popup-subtitle {
+            font-size: 1.1rem;
+            color: #590d22;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .password-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .password-input-container {
+            position: relative;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ffafcc;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .password-input:focus {
+            border-color: #ff4d6d;
+            box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.2);
+        }
+
+        .password-submit {
+            background: linear-gradient(45deg, #ff4d6d, #c9184a);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .password-submit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(201, 24, 74, 0.4);
+        }
+
+        .password-error {
+            color: #ff4d6d;
+            font-size: 0.9rem;
+            min-height: 20px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .password-error.show {
+            display: block;
+        }
+
+        .password-hint {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Loading Page Styles - ADDED */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffafcc, #ffcad4, #bde0fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loading-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(168, 28, 76, 0.4);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-heart {
+            font-size: 4rem;
+            color: #ff4d6d;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite;
+            display: block;
+        }
+
+        .loading-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #a4133c;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .loading-subtext {
+            font-size: 1.2rem;
+            color: #590d22;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .loading-progress {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 77, 109, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff4d6d, #c9184a);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .loading-dots {
+            font-size: 2rem;
+            color: #a4133c;
+            letter-spacing: 5px;
+            margin-top: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes textReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes dots {
+            0%, 20% {
+                color: rgba(164, 19, 60, 0.2);
+                text-shadow: none;
+            }
+            100% {
+                color: #a4133c;
+                text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+            }
+        }
+
+        .shake {
+            animation: shake 0.5s ease;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .card {
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+            }
+            
+            .card {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .header-image-container {
+                max-width: 95%;
+            }
+            
+            .header-image {
+                height: 250px;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .salutation {
+                font-size: 2.2rem;
+            }
+            
+            .message {
+                font-size: 1.4rem;
+            }
+            
+            .quote {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+            
+            .password-button {
+                font-size: 1.1rem;
+                padding: 10px 25px;
+            }
+
+            .password-popup {
+                padding: 30px 20px;
+            }
+
+            .popup-title {
+                font-size: 2rem;
+            }
+
+            /* Loading page responsive */
+            .loading-container {
+                padding: 30px 20px;
+            }
+
+            .loading-text {
+                font-size: 2.2rem;
+            }
+
+            .loading-subtext {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-image {
+                height: 200px;
+            }
+            
+            .salutation {
+                font-size: 1.8rem;
+            }
+            
+            .message {
+                font-size: 1.3rem;
+            }
+            
+            .quote {
+                font-size: 1rem;
+                padding: 12px;
+            }
+            
+            .password-button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            /* Loading page responsive */
+            .loading-text {
+                font-size: 1.8rem;
+            }
+
+            .loading-subtext {
+                font-size: 0.9rem;
+            }
+
+            .loading-heart {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Dear Guchu,</h1>
+            <div class="header-image-container">
+                <img src="assets/ghibli-homepage.png" 
+                     alt="Romantic Valentine's Day" 
+                     class="header-image">
+                <div class="image-overlay"></div>
+            </div>
+            <p>Happy Valentine's Day! ❤️</p>
+        </div>
+        
+        <div class="card">
+            <div class="heart-border"></div>
+            <div class="envelope"></div>
+            
+            <div class="card-content">
+                <div class="salutation">
+                </div>
+                
+
+                
+                <div class="quote">
+                I wanted to take a moment to tell you how much I truly appreciate the man you are. I walked into this marriage in awe of your perfection, but I've fallen in love with your heart even more. Thank you for the incredible patience you show me every day and for the 'space' you've created for us to bloom at our own pace. You have a way of making all my insecurities disappear just by being you. I am so lucky to have a husband who is not only my partner but my greatest comfort and support system. I love you.
+                </div>
+            </div>
+
+            <div class="password-container">
+                <button class="password-button" id="passwordButton">
+                    <i class="fas fa-lock"></i> CLICK FOR A SPECIAL SURPRISE
+                </button>
+            </div>
+
+            <div class="floating-hearts" id="floatingHearts"></div>
+        </div>
+        
+        <div class="footer">
+            Made with <i class="fas fa-heart" style="color:#ff4d6d;"></i> From Gargi.
+        </div>
+    </div>
+
+    <!-- Password Popup -->
+    <div class="popup-overlay" id="passwordPopup">
+        <div class="password-popup">
+            <button class="popup-close" id="closePopup">&times;</button>
+            <h2 class="popup-title">Abhishek's Valentine Surprise!</h2>
+            <p class="popup-subtitle">Enter the password to unlock your surprise</p>
+            
+            <form class="password-form" id="passwordForm">
+                <div class="password-input-container">
+                    <input type="password" class="password-input" id="passwordInput" placeholder="Enter password..." autocomplete="off" required>
+                    <div class="password-error" id="passwordError">Incorrect password. Try again!</div>
+                </div>
+                <button type="submit" class="password-submit">UNLOCK SURPRISE</button>
+            </form>
+            
+            <p class="password-hint">Hint: 123</p>
+        </div>
+    </div>
+
+    <!-- Loading Page - ADDED -->
+    <div class="loading-overlay" id="loadingPage">
+        <div class="loading-container">
+            <div class="loading-heart">❤️</div>
+            <h2 class="loading-text">Loading Gargi & Abhishek's Love Story</h2>
+            <p class="loading-subtext">Preparing something very special for you...</p>
+            <div class="loading-progress">
+                <div class="loading-progress-bar" id="loadingProgress"></div>
+            </div>
+            <div class="loading-dots" id="loadingDots">...</div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts animation
+        const floatingHearts = document.getElementById('floatingHearts');
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤';
+            
+            // Random position
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            const rotation = Math.random() * 360;
+            
+            // Random size
+            const size = Math.random() * 1 + 0.5;
+            
+            // Random animation duration
+            const duration = Math.random() * 3 + 2;
+            
+            // Apply styles
+            heart.style.left = `${startX}%`;
+            heart.style.top = `${startY}%`;
+            heart.style.transform = `rotate(${rotation}deg) scale(${size})`;
+            heart.style.animation = `float ${duration}s linear forwards`;
+            
+            floatingHearts.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+        
+        // Create hearts periodically
+        setInterval(createHeart, 300);
+        
+        // Password popup functionality
+        const passwordButton = document.getElementById('passwordButton');
+        const passwordPopup = document.getElementById('passwordPopup');
+        const closePopup = document.getElementById('closePopup');
+        const passwordForm = document.getElementById('passwordForm');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordError = document.getElementById('passwordError');
+        
+        // Loading page elements - ADDED
+        const loadingPage = document.getElementById('loadingPage');
+        const loadingProgress = document.getElementById('loadingProgress');
+        const loadingDots = document.getElementById('loadingDots');
+        
+        // Correct password - using a date format as hinted (DDMMYYYY)
+        // Change this to your desired password
+        const CORRECT_PASSWORD = "123"; // Example: 14th February 2025
+        
+        // Open popup when button is clicked
+        passwordButton.addEventListener('click', function() {
+            // Create burst of hearts
+            for(let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, i * 100);
+            }
+            
+            // Show popup
+            passwordPopup.classList.add('active');
+            passwordInput.focus();
+        });
+        
+        // Close popup when X is clicked
+        closePopup.addEventListener('click', function() {
+            passwordPopup.classList.remove('active');
+            passwordInput.value = '';
+            passwordError.classList.remove('show');
+        });
+        
+        // Close popup when clicking outside the popup
+        passwordPopup.addEventListener('click', function(e) {
+            if (e.target === passwordPopup) {
+                passwordPopup.classList.remove('active');
+                passwordInput.value = '';
+                passwordError.classList.remove('show');
+            }
+        });
+        
+        // Handle form submission
+        passwordForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const enteredPassword = passwordInput.value.trim();
+            
+            // Check if password is correct
+            if (enteredPassword === CORRECT_PASSWORD) {
+                // Password is correct
+                passwordButton.innerHTML = '<i class="fas fa-heart"></i> ACCESS GRANTED!';
+                passwordButton.style.background = 'linear-gradient(45deg, #4CAF50, #2E7D32)';
+                
+                // Create celebration hearts
+                for(let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        createHeart();
+                    }, i * 50);
+                }
+                
+                // Close popup
+                passwordPopup.classList.remove('active');
+                passwordInput.value = '';
+                
+                // Show loading page - ADDED
+                setTimeout(() => {
+                    loadingPage.classList.add('active');
+                    
+                    // Animate dots
+                    let dots = 0;
+                    const dotsInterval = setInterval(() => {
+                        dots = (dots + 1) % 4;
+                        loadingDots.innerHTML = '.'.repeat(dots);
+                    }, 500);
+                    
+                    // Animate progress bar
+                    let progress = 0;
+                    const progressInterval = setInterval(() => {
+                        progress += Math.random() * 15;
+                        if (progress > 100) progress = 100;
+                        loadingProgress.style.width = `${progress}%`;
+                        
+                        // When progress reaches 100%, redirect
+                        if (progress >= 100) {
+                            clearInterval(progressInterval);
+                            clearInterval(dotsInterval);
+                            
+                            // Wait a moment then redirect
+                            setTimeout(() => {
+                                // In a real scenario, you would redirect to your actual page
+                                // For this example, we'll redirect to a placeholder
+                                window.location.href = "/abhishek's-surprise/";
+                                
+                                // If you want to use a local page, you could use:
+                                // window.location.href = "special-surprise.html";
+                            }, 800);
+                        }
+                    }, 300);
+                    
+                }, 500);
+                
+            } else {
+                // Password is incorrect
+                passwordInput.classList.add('shake');
+                passwordError.classList.add('show');
+                
+                // Clear the input and refocus
+                setTimeout(() => {
+                    passwordInput.classList.remove('shake');
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }, 500);
+            }
+        });
+        
+        // Close error message when user starts typing again
+        passwordInput.addEventListener('input', function() {
+            passwordError.classList.remove('show');
+        });
+        
+        // Add initial hearts when page loads
+        window.addEventListener('load', () => {
+            for(let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, i * 200);
+            }
+        });
+    </script>
+</body>
+</html>
